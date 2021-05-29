@@ -75,7 +75,7 @@ public class CandidateManager implements CandidateService{
 	}
 	
 	private boolean lastNameChecker(Candidate candidate) {
-		if(candidate.getLastName().isBlank() || candidate.getLastName().equals(null)) {
+		if(candidate.getLastName().isBlank() || candidate.getLastName().equals(null) ) {
 			return false;
 		}
 		return true;

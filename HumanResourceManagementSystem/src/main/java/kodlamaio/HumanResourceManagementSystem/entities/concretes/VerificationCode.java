@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -16,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="verification_codes")
-public class EmailVerification {
+public class VerificationCode {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -30,4 +32,9 @@ public class EmailVerification {
 	
 	@Column(name="user_id")
 	private int userId;
+	
+	public boolean isVerified() {
+		return this.isVerified;
+	}
+	
 }
