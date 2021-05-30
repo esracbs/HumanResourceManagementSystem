@@ -1,5 +1,4 @@
 package kodlamaio.HumanResourceManagementSystem.entities.concretes;
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,22 +17,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Table(name="cities")
 @Entity
-@Table(name="job_titles")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","job_advertisements"})
-public class JobTitle {
+public class City {
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="title")
-	private String title;
-
+	@Column(name="city_name")
+	private String cityName;
+	
 	@JsonIgnore
-	@OneToMany(mappedBy="jobtitle")
-	private List<JobAdvertisement> jobAdvertisement;
+	@OneToMany(mappedBy = "city")
+    private List<JobAdvertisement> jobAdvertisement;
 	
 }
