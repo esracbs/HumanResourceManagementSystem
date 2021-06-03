@@ -9,23 +9,60 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.base.Strings;
 
+import kodlamaio.HumanResourceManagementSystem.business.abstracts.AbilityCandidateService;
 import kodlamaio.HumanResourceManagementSystem.business.abstracts.CandidateService;
+import kodlamaio.HumanResourceManagementSystem.business.abstracts.CvDetailService;
+import kodlamaio.HumanResourceManagementSystem.business.abstracts.LanguageCandidateService;
+import kodlamaio.HumanResourceManagementSystem.business.abstracts.SchoolCandidateService;
+import kodlamaio.HumanResourceManagementSystem.business.abstracts.SocialMediaService;
+import kodlamaio.HumanResourceManagementSystem.business.abstracts.WorkplaceCandidateService;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.DataResult;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.ErrorDataResult;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.SuccessDataResult;
 import kodlamaio.HumanResourceManagementSystem.dataAccess.abstracts.CandidateDao;
 import kodlamaio.HumanResourceManagementSystem.entities.concretes.Candidate;
+import kodlamaio.HumanResourceManagementSystem.entities.dtos.CvDto;
 
 @Service
 public class CandidateManager implements CandidateService{
 	
-	@Autowired
-	private CandidateDao candidateDao;
 	
-
-	public CandidateManager(CandidateDao candidateDao) {
-		super();
+	private CandidateDao candidateDao;
+	private WorkplaceCandidateService workplaceCandidateService;
+	private SocialMediaService socialMediaService;
+	private SchoolCandidateService schoolCandidateService;
+	private LanguageCandidateService languageCandidateService;
+	private AbilityCandidateService abilityCandidateService;
+	private CvDetailService cvDetailService;
+	
+	@Autowired
+	public CandidateManager(CandidateDao candidateDao,
+			WorkplaceCandidateService workplaceCandidateService,
+			SocialMediaService socialMediaService,
+			CvDetailService cvDetailService,
+			SchoolCandidateService schoolCandidateService,
+			LanguageCandidateService languageCandidateService,
+			AbilityCandidateService abilityCandidateService) {
 		this.candidateDao = candidateDao;
+		this.workplaceCandidateService = workplaceCandidateService;
+		this.socialMediaService = socialMediaService;
+		this.schoolCandidateService = schoolCandidateService;
+		this.languageCandidateService = languageCandidateService;
+		this.abilityCandidateService = abilityCandidateService;
+		this.cvDetailService = cvDetailService;
+	}
+	
+	@Override
+	public DataResult<CvDto> getCandidateCvByCandidateId(int candidateId) {
+		CvDto cvDto = new CvDto();
+		cvDto.setCandidate(this.candidateDao.findById(candidateId).get());
+		cvDto.setAbilityCandidates(this.abilityCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setLanguageCandidates(this.languageCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setSchoolCandidates(this.schoolCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setWorkplaceCandidates(this.workplaceCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setSocialMedias(this.socialMediaService.getByCandidateId(candidateId).getData());
+		cvDto.setCvDetail(this.cvDetailService.getByCandidateId(candidateId).getData());
+		return new SuccessDataResult<CvDto>(cvDto,"CV Getirildi");
 	}
 	@Override
 	public DataResult<Candidate> add(Candidate candidate) {
