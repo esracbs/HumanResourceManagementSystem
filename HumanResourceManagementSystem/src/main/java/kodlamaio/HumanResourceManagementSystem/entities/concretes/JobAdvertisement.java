@@ -1,5 +1,6 @@
 package kodlamaio.HumanResourceManagementSystem.entities.concretes;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -46,10 +47,10 @@ public class JobAdvertisement {
 	private int quota;
 	
 	@Column(name="appeal_expiration_date")
-	private LocalDateTime appealExpirationDate;
+	private Date appealExpirationDate;
 	
 	@Column(name="created_date")
-	private LocalDateTime createdDate;
+	private Date createdDate;
 	
 	@Column(name="min_salary")
 	private Double minSalary;
