@@ -17,10 +17,11 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.CvDetail;
 public class CvDetailManager implements CvDetailService {
 
     private CvDetailDao cvDetailDao;
-    @Autowired
-    public CvDetailManager(CvDetailDao cvDetailDao) {
-        this.cvDetailDao = cvDetailDao;
-    }
+
+	@Autowired
+	public CvDetailManager(CvDetailDao cvDetailDao) {
+		this.cvDetailDao = cvDetailDao;
+	}
 
     @Override
     public DataResult<List<CvDetail>> getAll() {

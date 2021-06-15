@@ -156,4 +156,9 @@ public class CandidateManager implements CandidateService{
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(),"Başarılı Şekilde İş Arayanlar Listelendi");
 	}
+	@Override
+	public DataResult<Candidate> getByFirstName(String firstName) {
+		return new SuccessDataResult<Candidate>
+		(this.candidateDao.getByFirstName(firstName),"Data listelendi");	
+	}
 }

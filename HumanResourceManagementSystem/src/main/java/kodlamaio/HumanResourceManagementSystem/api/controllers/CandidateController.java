@@ -3,10 +3,12 @@ package kodlamaio.HumanResourceManagementSystem.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.HumanResourceManagementSystem.business.abstracts.CandidateService;
@@ -16,6 +18,7 @@ import kodlamaio.HumanResourceManagementSystem.entities.dtos.CvDto;
 
 @RestController
 @RequestMapping("/api/candidate")
+@CrossOrigin
 public class CandidateController {
 	
 	private CandidateService candidateService;
@@ -37,5 +40,9 @@ public class CandidateController {
 	@GetMapping("/getCandidateCvByCandidateId")
 	public DataResult<CvDto> getCandidateCvByCandidateId(int candidateId){
 		return candidateService.getCandidateCvByCandidateId(candidateId);
+	}
+	@GetMapping("/getByCandidateName")
+	public DataResult<Candidate> getByFirstName(@RequestParam String firstName){
+		return this.candidateService.getByFirstName(firstName);
 	}
 }

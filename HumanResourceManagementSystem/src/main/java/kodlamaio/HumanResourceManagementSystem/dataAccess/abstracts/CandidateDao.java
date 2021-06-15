@@ -9,6 +9,7 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.Candidate;
 
 public interface CandidateDao extends JpaRepository<Candidate, Integer>{
 	
+	Candidate getByFirstName(String firstName);
 	List<Candidate> findAllByEmail(String email);
 	List<Candidate> findAllByIdentificationNumber(String identificationNumber);
 }

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @Entity
 @Table(name="cv_details")
@@ -19,9 +21,14 @@ public class CvDetail {
     @Column(name="id")
     private int id;
 
+    @JsonIgnore
     @OneToOne()
     @JoinColumn(name="candidate_id")
     private Candidate candidate;
+    
+    //@ManyToOne()
+	//@JoinColumn(name = "image_id")
+	//private Image image;
 
     @Column(name="description")
     private String description;

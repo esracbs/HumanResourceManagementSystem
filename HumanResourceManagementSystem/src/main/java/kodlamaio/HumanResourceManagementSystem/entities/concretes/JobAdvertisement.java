@@ -30,16 +30,6 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 	
-	//@Column(name="employer_id")
-	//private int employerId;
-	
-	//@Column(name="job_title_id")
-	//private int jobtitleId;
-
-	
-	//@Column(name="city_id")
-	//private int cityId;
-	
 	@Column(name="description")
 	private String description;
 	
@@ -72,5 +62,13 @@ public class JobAdvertisement {
 	@ManyToOne()
 	@JoinColumn(name = "job_title_id")
 	private JobTitle jobtitle;
+	
+	@ManyToOne()
+	@JoinColumn(name = "work_schedule_id")
+	private WorkSchedule workSchedule;
+	
+	@ManyToOne
+	@JoinColumn(name = "work_types_id")
+	private WorkType workType;
 	 
 }
