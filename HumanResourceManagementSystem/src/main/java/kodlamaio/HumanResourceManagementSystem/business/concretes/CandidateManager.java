@@ -157,8 +157,8 @@ public class CandidateManager implements CandidateService{
 		return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(),"Başarılı Şekilde İş Arayanlar Listelendi");
 	}
 	@Override
-	public DataResult<Candidate> getByFirstName(String firstName) {
+	public DataResult<Candidate> getById(int id) {
 		return new SuccessDataResult<Candidate>
-		(this.candidateDao.getByFirstName(firstName),"Data listelendi");	
+		(this.candidateDao.getById(id),"Data listelendi");	
 	}
 }

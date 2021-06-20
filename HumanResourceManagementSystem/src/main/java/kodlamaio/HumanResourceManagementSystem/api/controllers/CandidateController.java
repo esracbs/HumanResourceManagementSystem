@@ -41,8 +41,8 @@ public class CandidateController {
 	public DataResult<CvDto> getCandidateCvByCandidateId(int candidateId){
 		return candidateService.getCandidateCvByCandidateId(candidateId);
 	}
-	@GetMapping("/getByCandidateName")
-	public DataResult<Candidate> getByFirstName(@RequestParam String firstName){
-		return this.candidateService.getByFirstName(firstName);
+	@GetMapping("/getByCandidateId")
+	public DataResult<Candidate> getById(@RequestParam int id){
+		return this.candidateService.getById(id);
 	}
 }

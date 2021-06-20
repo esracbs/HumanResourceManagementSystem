@@ -2,6 +2,7 @@ package kodlamaio.HumanResourceManagementSystem.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.SchoolCandidat
 
 @RestController
 @RequestMapping("/api/schoolCandidates")
+@CrossOrigin
 public class SchoolCandidateController {
 
     private SchoolCandidateService schoolCandidateService;

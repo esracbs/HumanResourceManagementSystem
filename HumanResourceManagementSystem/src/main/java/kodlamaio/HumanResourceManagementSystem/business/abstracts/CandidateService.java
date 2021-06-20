@@ -10,5 +10,5 @@ public interface CandidateService {
 	DataResult<Candidate> add(Candidate candidate);
 	DataResult<List<Candidate>> getAll();
 	DataResult<CvDto> getCandidateCvByCandidateId(int candidateId);
-	DataResult<Candidate> getByFirstName(String firstName);
+	DataResult<Candidate> getById(int id);
 }
