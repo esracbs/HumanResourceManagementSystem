@@ -14,4 +14,8 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getByIsActive();
 	DataResult<List<JobAdvertisement>> getByAdvertisementByCompany(String companyName);
 	DataResult<List<JobAdvertisement>> findAllByIsActiveSorted();
+	DataResult<List<JobAdvertisement>> getByIsConfirm();
+	DataResult<List<JobAdvertisement>> getByIsConfirmFalse();
+	Result setConfirm(int id);
+	DataResult<JobAdvertisement> getById(int id);
 }

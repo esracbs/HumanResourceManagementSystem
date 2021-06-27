@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -36,9 +37,11 @@ public class JobAdvertisement {
 	@Column(name="quota")
 	private int quota;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name="appeal_expiration_date")
 	private Date appealExpirationDate;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name="created_date")
 	private Date createdDate;
 	
@@ -49,7 +52,10 @@ public class JobAdvertisement {
 	private Double maxSalary;
 	
 	@Column(name="is_active")
-	private boolean isActive;
+	private boolean isActive=true;
+	
+	@Column(name = "is_confirm")
+	private boolean isConfirm=false;
 	
 	@ManyToOne()
 	@JoinColumn(name = "employer_id")
