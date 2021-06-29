@@ -15,11 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.HumanResourceManagementSystem.business.abstracts.JobAdvertisementService;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.DataResult;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.Result;
-import kodlamaio.HumanResourceManagementSystem.entities.concretes.Candidate;
 import kodlamaio.HumanResourceManagementSystem.entities.concretes.JobAdvertisement;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/jobAdvertisements")
 @CrossOrigin

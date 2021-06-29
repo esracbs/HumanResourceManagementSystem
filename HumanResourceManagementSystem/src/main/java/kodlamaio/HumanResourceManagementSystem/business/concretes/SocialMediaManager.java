@@ -20,9 +20,6 @@ public class SocialMediaManager implements SocialMediaService{
     public SocialMediaManager(SocialMediaDao socialMediaDao) {
         this.socialMediaDao = socialMediaDao;
     }
-
-
-
     @Override
     public DataResult<List<SocialMedia>> getAll() {
         return new SuccessDataResult<List<SocialMedia>>(socialMediaDao.findAll(),"listelendi");
@@ -36,4 +33,14 @@ public class SocialMediaManager implements SocialMediaService{
         socialMediaDao.save(socialMedia);
         return new SuccessResult("Başarıyla eklendi");
     }
+    @Override
+	public Result update(SocialMedia socialMedia, int linkId) {
+		var value = socialMediaDao.getById(linkId);
+		value.setLink(socialMedia.getLink());
+		value.setCandidate(socialMedia.getCandidate());
+		value.setLinkType(socialMedia.getLinkType());
+		socialMediaDao.save(value);
+		return new SuccessResult();
+	}
+    
 }

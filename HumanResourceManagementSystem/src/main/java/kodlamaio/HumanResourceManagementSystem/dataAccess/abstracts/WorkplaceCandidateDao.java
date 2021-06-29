@@ -8,4 +8,5 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.WorkplaceCandi
 
 public interface WorkplaceCandidateDao extends JpaRepository<WorkplaceCandidate, Integer> {
 	List<WorkplaceCandidate> getByCandidate_Id(int candidateId);
+	WorkplaceCandidate getById(int id);
 }

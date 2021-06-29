@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name="workplaces")
 @NoArgsConstructor
 @AllArgsConstructor
+@CrossOrigin
 public class Workplace {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,7 +31,7 @@ public class Workplace {
 	private int id;
 	
 	@Column(name="workplace_name")
-	private String WorkplaceName;
+	private String workplaceName;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "workplace" )

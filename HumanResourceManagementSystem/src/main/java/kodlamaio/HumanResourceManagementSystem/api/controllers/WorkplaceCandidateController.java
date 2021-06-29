@@ -39,4 +39,8 @@ public class WorkplaceCandidateController {
     public Result add(@RequestBody WorkplaceCandidate workplaceCandidate){
         return workplaceCandidateService.add(workplaceCandidate);
     }
+    @PostMapping("/update")
+	public Result update(@RequestBody WorkplaceCandidate workplaceCandidate,@RequestParam int candidateId) {
+		return this.workplaceCandidateService.update(workplaceCandidate,candidateId);
+	}
 }

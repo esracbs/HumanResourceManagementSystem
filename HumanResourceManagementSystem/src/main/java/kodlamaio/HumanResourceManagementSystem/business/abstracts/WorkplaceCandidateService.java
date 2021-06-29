@@ -11,4 +11,5 @@ public interface WorkplaceCandidateService {
     DataResult<List<WorkplaceCandidate>> getAll();
     DataResult<List<WorkplaceCandidate>> getByCandidateId(int candidateId);
     Result add(WorkplaceCandidate workplaceCandidate);
+    Result update(WorkplaceCandidate workplaceCandidate,int candidateId);
 }

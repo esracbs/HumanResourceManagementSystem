@@ -1,6 +1,7 @@
 package kodlamaio.HumanResourceManagementSystem.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/SocialMedias")
+@CrossOrigin
 public class SocialMediaController {
 
     private SocialMediaService socialMediaService;
@@ -37,4 +39,8 @@ public class SocialMediaController {
     public Result add(@RequestBody SocialMedia socialMedia){
        return socialMediaService.add(socialMedia);
     }
+    @PostMapping("/update")
+	public Result update(@RequestBody SocialMedia socialMedia,@RequestParam int linkId) {
+		return this.socialMediaService.update(socialMedia,linkId);
+	}
 }

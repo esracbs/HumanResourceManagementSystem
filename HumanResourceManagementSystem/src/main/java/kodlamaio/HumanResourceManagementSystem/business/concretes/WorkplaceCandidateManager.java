@@ -36,4 +36,14 @@ public class WorkplaceCandidateManager implements WorkplaceCandidateService {
         workplaceCandidateDao.save(workplaceCandidate);
         return new SuccessResult("başarıyla eklendi");
     }
+
+	@Override
+	public Result update(WorkplaceCandidate workplaceCandidate, int candidateId) {
+		var value = workplaceCandidateDao.getById(candidateId);
+		value.setDateOfEntry(workplaceCandidate.getDateOfEntry());
+		value.setDateOfQuit(workplaceCandidate.getDateOfQuit());
+		value.setWorkplace(workplaceCandidate.getWorkplace());
+		workplaceCandidateDao.save(value);
+		return new SuccessResult();
+	}
 }
