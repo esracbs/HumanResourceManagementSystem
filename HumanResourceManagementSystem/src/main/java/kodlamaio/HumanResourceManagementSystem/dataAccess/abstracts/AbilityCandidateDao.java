@@ -8,4 +8,5 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.AbilityCandida
 
 public interface AbilityCandidateDao extends JpaRepository<AbilityCandidate , Integer>{
 	List<AbilityCandidate> getByCandidate_Id(int candidateId);
+	AbilityCandidate getById(int id);
 }

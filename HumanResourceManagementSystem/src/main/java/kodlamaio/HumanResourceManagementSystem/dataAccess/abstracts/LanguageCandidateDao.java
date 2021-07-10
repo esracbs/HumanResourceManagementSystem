@@ -8,4 +8,5 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.LanguageCandid
 
 public interface LanguageCandidateDao extends JpaRepository<LanguageCandidate, Integer>{
 	List<LanguageCandidate> getByCandidate_Id(int candidateId);
+	LanguageCandidate getById(int id);
 }

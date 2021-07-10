@@ -9,4 +9,5 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.SchoolCandidat
 
 public interface SchoolCandidateDao extends JpaRepository<SchoolCandidate, Integer>{
 	List<SchoolCandidate> getByCandidate_Id(int candidateId);
+	SchoolCandidate getById(int id);
 }

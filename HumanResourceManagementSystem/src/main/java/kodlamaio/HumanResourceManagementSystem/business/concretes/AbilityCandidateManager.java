@@ -38,4 +38,13 @@ public class AbilityCandidateManager implements AbilityCandidateService {
         abilityCandidateDao.save(abilityCandidate);
         return new SuccessResult("Başarıyla eklendi");
     }
+    @Override
+	public Result update(AbilityCandidate abilityCandidate,int id) {
+		var value = abilityCandidateDao.getById(id);
+		value.setAbility(abilityCandidate.getAbility());
+		value.setCandidate(abilityCandidate.getCandidate());
+		abilityCandidateDao.save(value);
+		return new SuccessResult();
+		
+	}
 }

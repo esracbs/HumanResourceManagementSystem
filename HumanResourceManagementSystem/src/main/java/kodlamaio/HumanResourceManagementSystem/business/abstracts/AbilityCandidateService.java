@@ -8,6 +8,7 @@ import kodlamaio.HumanResourceManagementSystem.entities.concretes.AbilityCandida
 
 public interface AbilityCandidateService {
 	Result add(AbilityCandidate abilityCandidate);
+	Result update(AbilityCandidate abilityCandidate,int id);
 	DataResult<List<AbilityCandidate>> getAll();
 	DataResult<List<AbilityCandidate>> getByCandidateId(int candidateId);
 }

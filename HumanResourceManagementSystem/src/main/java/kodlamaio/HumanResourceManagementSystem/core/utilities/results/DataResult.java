@@ -9,7 +9,7 @@ public class DataResult<T> extends Result{
 	}
 	public DataResult(T data ,boolean success) {
 		super(success);//super bilgisi base sınıfın constructorlarını çalıştırıyor
-		this.data=data;
+		this.data=data; 
 	}
 	public T getData() {
 		return this.data;

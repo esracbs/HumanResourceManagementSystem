@@ -36,5 +36,14 @@ public class LanguageCandidateManager implements LanguageCandidateService{
 		this.languageCandidateDao.save(languageCandidate);
 		return new SuccessResult("Başarıyla Eklendi");
 	}
+	@Override
+	public Result update(LanguageCandidate languageCandidate, int id) {
+		var value = languageCandidateDao.getById(id);
+		value.setLanguage(languageCandidate.getLanguage());
+		value.setCandidate(languageCandidate.getCandidate());
+		value.setLanguageLevel(languageCandidate.getLanguageLevel());
+		languageCandidateDao.save(value);
+		return new SuccessResult();
+	}
 
 }

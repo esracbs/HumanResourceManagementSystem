@@ -76,5 +76,9 @@ public class JobAdvertisement {
 	@ManyToOne
 	@JoinColumn(name = "work_types_id")
 	private WorkType workType;
+	
+
+	@Column(name="advert_title")
+	private String advertTitle;
 	 
 }

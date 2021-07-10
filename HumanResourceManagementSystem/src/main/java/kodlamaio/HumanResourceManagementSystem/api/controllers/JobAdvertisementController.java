@@ -16,6 +16,7 @@ import kodlamaio.HumanResourceManagementSystem.business.abstracts.JobAdvertiseme
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.DataResult;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.Result;
 import kodlamaio.HumanResourceManagementSystem.entities.concretes.JobAdvertisement;
+import kodlamaio.HumanResourceManagementSystem.entities.dtos.JobAdvertisementFilterDto;
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
@@ -75,4 +76,8 @@ public class JobAdvertisementController {
 	public DataResult<JobAdvertisement> getById(@RequestParam int id){
 		return this.jobAdvertisementService.getById(id);
 	}
+	@PostMapping("/getByActiveAndFilter")
+    public Result getByActiveAndFilter(@RequestParam int pageNo,@RequestParam int pageSize,@RequestBody JobAdvertisementFilterDto jobAdFilter){
+        return jobAdvertisementService.getByIsActiveAndPageNumberAndFilter(pageNo,pageSize,jobAdFilter);
+    }
 }

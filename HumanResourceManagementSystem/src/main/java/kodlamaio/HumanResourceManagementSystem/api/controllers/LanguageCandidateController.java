@@ -40,5 +40,9 @@ public class LanguageCandidateController {
     public DataResult<List<LanguageCandidate>> getByCandidateId(@RequestParam int candidateId){
         return languageCandidateService.getByCandidateId(candidateId);
     }
+    @PostMapping("/update")
+	public Result update(@RequestBody LanguageCandidate languageCandidate,@RequestParam int id) {
+		return this.languageCandidateService.update(languageCandidate,id);
+	}
 	
 }

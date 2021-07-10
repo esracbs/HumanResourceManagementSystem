@@ -40,5 +40,9 @@ public class AbilityCandidateController {
     public DataResult<List<AbilityCandidate>> getByCandidateId(@RequestParam int candidateId){
         return abilityCandidateService.getByCandidateId(candidateId);
     }
+    @PostMapping("/update")
+	public Result update(@RequestBody AbilityCandidate abilityCandidate,@RequestParam int id){
+		return this.abilityCandidateService.update(abilityCandidate,id);
+	}
 
 }

@@ -61,4 +61,7 @@ public class Candidate extends User {
 	@JsonIgnore
 	@OneToOne(mappedBy = "candidate" )
 	private CvDetail cvDetail;
+
+	
+	
 }

@@ -8,16 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.HumanResourceManagementSystem.dataAccess.abstracts.CityDao;
-import kodlamaio.HumanResourceManagementSystem.dataAccess.abstracts.EmployerDao;
 import kodlamaio.HumanResourceManagementSystem.business.abstracts.JobAdvertisementService;
 import kodlamaio.HumanResourceManagementSystem.core.business.BusinessEngine;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.DataResult;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.ErrorResult;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.Result;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.SuccessDataResult;
 import kodlamaio.HumanResourceManagementSystem.core.utilities.results.SuccessResult;
 import kodlamaio.HumanResourceManagementSystem.dataAccess.abstracts.JobAdvertisementDao;
 import kodlamaio.HumanResourceManagementSystem.entities.concretes.JobAdvertisement;
+import kodlamaio.HumanResourceManagementSystem.entities.dtos.JobAdvertisementFilterDto;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService{
@@ -97,6 +100,11 @@ public class JobAdvertisementManager implements JobAdvertisementService{
         }
 
     }
-	
+	@Override
+    public DataResult<List<JobAdvertisement>> getByIsActiveAndPageNumberAndFilter(int pageNo, int pageSize, JobAdvertisementFilterDto jobAdFilter) {
+        Pageable pageable = PageRequest.of(pageNo -1, pageSize);
+        return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByFilter(jobAdFilter, pageable).getContent(),
+        this.jobAdvertisementDao.getByFilter(jobAdFilter,pageable).getTotalElements()+"");
+    }
 	
 }
