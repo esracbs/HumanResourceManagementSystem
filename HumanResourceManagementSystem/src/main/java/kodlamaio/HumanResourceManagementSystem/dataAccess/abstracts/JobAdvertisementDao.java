@@ -24,7 +24,8 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 	        +" and ((:#{#filter.workScheduleId}) IS NULL OR j.workSchedule.id IN (:#{#filter.workScheduleId}))"
 	        //+" and ((:#{#filter.minSalary}) IS NULL OR (:#{#filter.minSalary}) = 0 OR j.minSalary >= (:#{#filter.minSalary})) "
 	        //+" and ((:#{#filter.maxSalary}) IS NULL OR (:#{#filter.maxSalary}) = 0 OR j.maxSalary <= (:#{#filter.maxSalary}))"
-	        +" and j.isActive=true")
+	        +" and j.isActive=true"
+	        +" and j.isConfirm=true")
 	    public Page<JobAdvertisement> getByFilter(@Param("filter") JobAdvertisementFilterDto jobAdFilter, Pageable pageable);
 
 }

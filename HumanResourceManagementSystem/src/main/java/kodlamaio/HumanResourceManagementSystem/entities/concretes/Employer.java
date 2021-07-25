@@ -41,6 +41,9 @@ public class Employer extends User {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+	@Column(name = "waiting_update")
+    private boolean waitingUpdate;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "employer")
 	private List<JobAdvertisement> jobAdvertisement;
